@@ -1,0 +1,4 @@
+- npm i bootstrap :: bootstrap kütüphanesini kurar
+- npm install json-server : api işlemleri için json server kurulumu
+- npm install jsonwebtoken : outantication işlemleri : login olan kullanıcıya bir token verme  gibi işlemler için. : json server bize token üretmiyor o yüzden bu yapıyı kullanacaz.
+-
