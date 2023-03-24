@@ -1,0 +1,11 @@
+-------------- GENEL 
+- package.json : da projeye dahil ettiğimiz kütüphaneler tutulur.
+- package.json içindeki : dependencies : kısmında projede publish edeceğimizdede kullanacağımız kütüphaneler mevcuttur.
+- package.json içindeki : devDependencies : kısmında ise : projeyi sadece geliştirirken kullanacağımız kütüphanler mevcuttur
+: bir kütüphaneyi indirken : npm install ... --save-dev  : der isem projeyi direk  : devDependencies kısmına atar : yani sadece geliştiriken kullanacağızdır.
+
+
+---------- scripts kısmı : 
+- "json": "json-server data.js -p 3500"   === json ismi ile çağrılsın , json-server'i çalıştırsın, data.js : gönderilecek data , 3500 portundan ayağa kalksın 
+: gönderilecek datayı json servere veriyoruz : bu içeriğe göre bir restful servis oluşturuyor (restful servis : 2 projenin internet üzerinden alışveriş yapması : kabaca).
+= npm run json diyerekde : json isimli script'i çalıştırabiliyoryum ::: npm run .. : diyerek herhangi bir script'i çalıştırabilirim.
