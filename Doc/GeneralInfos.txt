@@ -1,3 +1,7 @@
 
 ---------- Angular.json
 - uygulamayı geliştirirken kullanacağımız kütüphaneleri : Angular.json sayfasındaki : architect - styles ve scripts taglarına ekliyoruz.
+
+
+----- servis
+- servisleri modüle eklerken provider içine eklememiz gerekiyor.
