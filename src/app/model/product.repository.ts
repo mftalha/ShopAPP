@@ -2,6 +2,7 @@
 // component sayfaları : repository'ler ile muhattap olacaklar : servis sınıfları ile değil : servis sınıfları ile repository muhattap olacak. : ve componenet'ler dolaylı olarak servis sınıfındaki methotları kullanmış olacak.
 
 import { Injectable, OnInit} from '@angular/core'
+import { Category } from './category.model';
 import { Product } from './product.model'
 import { RestService } from './rest.service'
 
@@ -26,7 +27,10 @@ export class ProductRepository implements OnInit {
         return this.products.find(i => i.id === id);
     }
 
-    getProducts(): Product[] {
-        return this.products;
+    getProducts(category: Category = null as any): Product[] { //null olabilir : tüm kategorilerden bir kategori göndermiyorduk.
+        if(category)    
+            return this.products.filter(p => p.category == category.name);
+        else
+            return this.products
     }
 }
