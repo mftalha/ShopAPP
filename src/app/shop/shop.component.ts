@@ -12,6 +12,8 @@ import { ProductRepository } from "../model/product.repository";
 `]
 })
 export class ShopComponent{
+    public selectedCategory: Category | undefined = null!; // list grupta class'a active özelliği vermek için.
+
     constructor(
         private productRepository : ProductRepository,
         private categoryRepository: CategoryRepository
@@ -23,5 +25,9 @@ export class ShopComponent{
 
     get categories(): Category[]{
         return this.categoryRepository.getCategories();
+    }
+
+    changeCategory(newCategory?:  Category | undefined ){
+        this.selectedCategory = newCategory;
     }
 }
