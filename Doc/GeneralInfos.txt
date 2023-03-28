@@ -3,5 +3,11 @@
 - uygulamayı geliştirirken kullanacağımız kütüphaneleri : Angular.json sayfasındaki : architect - styles ve scripts taglarına ekliyoruz.
 
 
------ servis
+----- Servis İşlemleri
 - servisleri modüle eklerken provider içine eklememiz gerekiyor.
+
+
+
+----- Modül İşlemleri
+- eğerki modülde component var ise : exports etmeliyiz : farklı modülden erişilmesini istiyor isek. 
+- componnet yok ise direk modülden modülü import edip kullanabiliyoruz : kullanılacak modülün export edilmesine gerek yok
