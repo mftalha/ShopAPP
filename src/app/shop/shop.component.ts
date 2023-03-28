@@ -13,7 +13,7 @@ import { ProductRepository } from "../model/product.repository";
 })
 export class ShopComponent{
     public selectedCategory: Category | undefined = null!; // list grupta class'a active özelliği vermek için.
-    public productsPerPage = 4; // sayfalarda kaç ürün olacak
+    public productsPerPage = 2; // sayfalarda kaç ürün olacak
     public selectedPage = 1; //hangi sayfa etkin. = ürün gösterilen sayfa
     // 1 * 3 => 3 (0,3)
     // 2 * 3 => 6 (5,3)
@@ -23,7 +23,7 @@ export class ShopComponent{
         private categoryRepository: CategoryRepository
         ) {}
 
-    get products(): Product[]{
+    get products(): Product[]{ // listeler ile sayfaya basabilmek için ürünleri getir.
         let index = (this.selectedPage-1) * this.productsPerPage;
         // sayfada 3'er ürün gösterilmesini istediğimde.
         // 1. sayfada = (1-1) * 3 => 0. veriden başlıyarak al
@@ -34,12 +34,26 @@ export class ShopComponent{
         .slice(index,index + this.productsPerPage); //(hangi indexden başlıyacak , kaçıncı veriye kadar alacak) // 0,3 => [0 , 1 , 2] ;; 3,6 => [3 , 4 , 5]
     }
 
+    get pageNumbers(): number[]{
+        
+        // Math.ceil = 2,4 'ü = 3e yuvarla : yukarı yuarla
+        return Array(Math.ceil(this.productRepository
+            .getProducts(this.selectedCategory).length / this.productsPerPage))
+            .fill(0) // diziye 0 değerini ata
+            .map((a,i) => i + 1); // dizinden gelen elemanlar a yı temsil etsin ; i = index numarası ; map bize yeni bir dizi oluşturur 
+    }
+
+    changePage(p: number){ // sayfa altında kaçıncı ürün sayfasının gelmesini istediğimiz 
+        this.selectedPage = p;
+    }
+
     get categories(): Category[]{
         return this.categoryRepository.getCategories();
     }
 
     changeCategory(newCategory?:  Category | undefined ){
         this.selectedCategory = newCategory;
+        this.selectedPage = 1;
         //this.products;
     }
 }
