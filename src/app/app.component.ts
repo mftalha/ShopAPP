@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'root',
-  template: "<shop></shop>" 
+  template: "<router-outlet></router-outlet>" 
 })
+// template: "<router-outlet></router-outlet>"  == diyerek direk başlangıçta rooter yapısını çağır diyorum : rootur yapısı içinde yeni bir sayfa oluşturmadık : app.module içinde  imports kısmında ayarlamaları gerçekleştirdik
 export class AppComponent {
 }
 /*
