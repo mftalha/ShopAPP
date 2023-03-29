@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Product } from "./product.model";
 
-@Injectable() //bir sınıf olarak kullanmak için : artık constructor içinden bu sınıfı inject edip objesi üzerinden çağrılabilecek.
+@Injectable() //bir servis olarak kullanmak için Injectable ile işaretledik. : artık constructor içinden bu sınıfı inject edip objesi üzerinden çağrılabilecek.
+// kullanabilmek için kullanılacak modülün provider kısmına eklememiz gerekiyor ilgili servisleri.(servisler provider'a eklenir.)
 
 // kart bilgileri = kullanıcı ürün seçtikçe adedi ile : cart itema düşeek ve cartItem'larıda Cart içinde objesini oluşturup tutacaz.
 export class Cart{
