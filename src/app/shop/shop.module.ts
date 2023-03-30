@@ -7,11 +7,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { RouterModule } from '@angular/router';
 
 //modül sayfalarında olması şart.
 @NgModule({
     //ModelModule dediğimde artık : Model Module'nin tüm class larınını shop modül içinde kullabıp : api işlemlerimi gerçekleştirebileceğim.
-    imports: [ModelModule, BrowserModule, FormsModule], 
+    imports: [ModelModule, BrowserModule, FormsModule, RouterModule], //router kullanma sebebimiz routerLink kullanabilmek için.
     providers:[],
     declarations: [ShopComponent, NavbarComponent, CartSummaryComponent, CartDetailComponent, CheckoutComponent],
     exports: [ShopComponent, CartDetailComponent, CheckoutComponent] //eğerki modülde component var ise : exports etmeliyiz : farklı modülden erişilmesini istiyor isek. 

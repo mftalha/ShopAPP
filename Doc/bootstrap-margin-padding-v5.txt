@@ -1,0 +1,14 @@
+---------- Bootstrap 5 de margin ve pading yazımında farklılıklar olmuş
+Today 2021 in boostrap 5 Margin and Padding :
+Margin
+Margin top: mt-value
+Margin right: me-value
+Margin bottom: mb-value
+Margin left: ms-value
+
+Padding
+Padding top: pt-value
+Padding right: pe-value
+Padding bottom: pb-value
+Paddig left: ps-value.
+Where the range for the value is 0 to 5

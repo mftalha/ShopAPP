@@ -4,13 +4,12 @@ import { Product } from "../model/product.model";
 import { Category } from "../model/category.model";
 import { ProductRepository } from "../model/product.repository";
 import { Cart } from "../model/cart.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'shop',
   templateUrl: 'shop.component.html',
-  styles: [`
-  .pt-100 {padding-top:100px}
-`]
+  styles: []
 })
 export class ShopComponent{
     public selectedCategory: Category | undefined = null!; // list grupta class'a active özelliği vermek için.
@@ -22,7 +21,9 @@ export class ShopComponent{
     constructor(
         private productRepository : ProductRepository,
         private categoryRepository: CategoryRepository,
-        private cart: Cart) {}
+        private cart: Cart,
+        private router: Router //ürün detayına gitmek için ekledik
+        ) {}
 
     get products(): Product[]{ // listeler ile sayfaya basabilmek için ürünleri getir.
         let index = (this.selectedPage-1) * this.productsPerPage;
@@ -60,5 +61,6 @@ export class ShopComponent{
 
     addProductToCart(product: Product){
         this.cart.addItem(product);
+        this.router.navigateByUrl('/cart'); //ekle butonuna tıklayınca detay sayfasına yönlen.
     }
 }

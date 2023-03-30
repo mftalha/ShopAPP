@@ -7,14 +7,14 @@
             <cart-summary></cart-summary>
 
              <div class="list-group">
-                <a (click)="changeCategory()" href="#" class="list-group-item list-group-item-action">Tüm Kategoriler</a> <!-- Tüm kategorilere tıklandığında changeCategory'e değer atanmadığından null olup : actif olan list item'in üzerindeki mavi tik kalkacak.-->
-                <a  *ngFor="let c of categories"
+                <!-- <a (click)="changeCategory()" href="#" class="list-group-item list-group-item-action">Tüm Kategoriler</a> == a tag'ından butona çevirdik çünkü a tag'ında her tıkladığımızda sayfayı yneiliyordu.-->
+                <button (click)="changeCategory()"  class="list-group-item list-group-item-action">Tüm Kategoriler</button> <!-- Tüm kategorilere tıklandığında changeCategory'e değer atanmadığından null olup : actif olan list item'in üzerindeki mavi tik kalkacak.-->
+                <button  *ngFor="let c of categories"
                  (click)="changeCategory(c)" 
-                href="#"
                  class="list-group-item list-group-item-action"
                  [class.active]="c==selectedCategory"   
                  >{{c.name}}
-                </a>
+             </button>
                 <!-- [class.active]="c==selectedCategory" == diyerek == eğerki c == selectedCategory ise : class'a active ekle. ***class attribute binding işlemi :binding = bağlama** -->
              </div>   
         </div>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="card-footer text-center">
                                 <button class="btn btn-outline-primary btn-sm">Details</button>
-                                <button (click)="addProductToCart(p)" class="btn btn-outline-primary btn-sm ml-3">Add To Cart</button> <!--ml-3 : soldan boşkluk alsın-->
+                                <button (click)="addProductToCart(p)" class="btn btn-outline-primary btn-sm ms-2">Add To Cart</button> <!--ml-3 : soldan boşkluk alsın-->
                             </div>
                         </div>
                     </div>
