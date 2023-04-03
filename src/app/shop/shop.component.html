@@ -22,7 +22,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-warning"> <!-- ürünlerin üstünde sarı alert içinde kaç tane ürün bulundugunu gösterme. -->
-                        {{products.length}} tane ürün bulundu  
+                        <div class="form-inline float-end m-0 p-0">
+                            <select class="form-control-sm" 
+                            [value]="productsPerPage"
+                            (change)="changePageSize($any($event.target).value)"> 
+                            <!--[value]="productsPerPage" ile : components.ts içinde productsPerPage'e kaç tanımlandı ise value o değeri alır. -->
+                                <option value="2">2 tane</option>
+                                <option value="3">3 tane</option>
+                                <option value="4">4 tane</option>
+                                <option value="6">6 tane</option>
+                                <option value="8">8 tane</option>
+                            </select>
+                        </div>
+                        {{selectedProducts.length}} tane ürün bulundu  
                     </div>
                 </div>
                 <ng-container *ngFor="let p of products"> <!-- Dizi Ouşturabilmek için-->

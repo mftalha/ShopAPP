@@ -13,8 +13,9 @@ import { Router } from "@angular/router";
 })
 export class ShopComponent{
     public selectedCategory: Category | undefined = null!; // list grupta class'a active özelliği vermek için.
-    public productsPerPage = 2; // sayfalarda kaç ürün olacak
+    public productsPerPage = 4; // sayfalarda kaç ürün gösterilecek.
     public selectedPage = 1; //hangi sayfa etkin. = ürün gösterilen sayfa
+    public selectedProducts : Product[] = null as any;
     // 1 * 3 => 3 (0,3)
     // 2 * 3 => 6 (5,3)
 
@@ -23,16 +24,20 @@ export class ShopComponent{
         private categoryRepository: CategoryRepository,
         private cart: Cart,
         private router: Router //ürün detayına gitmek için ekledik
-        ) {}
+        ) {
+            this.products; //başlangıçta allProducts'u doldurmak için çağırıyorum
+        }
 
     get products(): Product[]{ // listeler ile sayfaya basabilmek için ürünleri getir.
         let index = (this.selectedPage-1) * this.productsPerPage;
         // sayfada 3'er ürün gösterilmesini istediğimde.
         // 1. sayfada = (1-1) * 3 => 0. veriden başlıyarak al
         // 2. sayfada = (2-1) * 3 => 3. veriden başlıyarak al
+        
+        this.selectedProducts = this.productRepository
+        .getProducts(this.selectedCategory);        
 
-        return this.productRepository
-        .getProducts(this.selectedCategory)
+        return this.selectedProducts
         .slice(index,index + this.productsPerPage); //(hangi indexden başlıyacak , kaçıncı veriye kadar alacak) // 0,3 => [0 , 1 , 2] ;; 3,6 => [3 , 4 , 5]
     }
 
@@ -56,7 +61,14 @@ export class ShopComponent{
     changeCategory(newCategory?:  Category | undefined ){
         this.selectedCategory = newCategory;
         this.selectedPage = 1;
+        this.products;
         //this.products;
+    }
+
+    //sayfada gösterilecek ürün sayısını değiştiren cmb için
+    changePageSize(p : number){
+        this.productsPerPage = p;
+        this.changePage(1); // alttaki sayfa bilgilerini güncelliyoruz.
     }
 
     addProductToCart(product: Product){

@@ -12,3 +12,12 @@ Padding right: pe-value
 Padding bottom: pb-value
 Paddig left: ps-value.
 Where the range for the value is 0 to 5
+
+
+----- Bootestrap 5 : Change, 
+float-right --> float-end
+float-left --> float-start
+ml-* --> ms-*
+pl-* --> ps-*
+mr-* --> me-*
+pr-* --> pe-*
