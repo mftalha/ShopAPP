@@ -1,0 +1,11 @@
+---- bir nesnenin id sine ulaşıma gibi durumlarda'da kullanılabilir.
+- $event.target.value => $any($event.target).value
+
+
+------ 
+- Bir html sayfasına başka bir htlml sayfasını çağırma gibi durumlarda : ana html sayfası : üst sayfa , çağrılan sayfa alt sayfa olma gibi mantık oluyor.
+-- Eğerki üst sayfadan alt sayfaya veri yollıyacak isek (.ts içinde tanımladığımız method , değişken) : alt componentin içinde : @Input oluşturup eşleştirme işlemi
+   gerçekleştiriyoruz. Eğerki alt sayfan üst sayfaya veri yollıyacaksak @output oluşturup gerekli eşleştirmeleri yapıp veri transferini gerçekleştirebiliyoruz.
+Not: Bu işlemleri shop html,ts[üst sayfa];  category-list, product-list[alt sayfa]
+@Input()
+@Output()

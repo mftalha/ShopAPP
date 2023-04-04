@@ -3,8 +3,6 @@ import { CategoryRepository } from "../model/category.repository";
 import { Product } from "../model/product.model";
 import { Category } from "../model/category.model";
 import { ProductRepository } from "../model/product.repository";
-import { Cart } from "../model/cart.model";
-import { Router } from "@angular/router";
 
 @Component({
   selector: 'shop',
@@ -20,10 +18,7 @@ export class ShopComponent{
     // 2 * 3 => 6 (5,3)
 
     constructor(
-        private productRepository : ProductRepository,
-        private categoryRepository: CategoryRepository,
-        private cart: Cart,
-        private router: Router //ürün detayına gitmek için ekledik
+        private productRepository : ProductRepository
         ) {
             this.products; //başlangıçta allProducts'u doldurmak için çağırıyorum
         }
@@ -54,25 +49,13 @@ export class ShopComponent{
         this.selectedPage = p;
     }
 
-    get categories(): Category[]{
-        return this.categoryRepository.getCategories();
-    }
-
-    changeCategory(newCategory?:  Category | undefined ){
-        this.selectedCategory = newCategory;
-        this.selectedPage = 1;
-        this.products;
-        //this.products;
-    }
-
     //sayfada gösterilecek ürün sayısını değiştiren cmb için
     changePageSize(p : number){
         this.productsPerPage = p;
         this.changePage(1); // alttaki sayfa bilgilerini güncelliyoruz.
     }
 
-    addProductToCart(product: Product){
-        this.cart.addItem(product);
-        this.router.navigateByUrl('/cart'); //ekle butonuna tıklayınca detay sayfasına yönlen.
+    getCategory(category: Category){
+        this.selectedCategory = category;
     }
 }

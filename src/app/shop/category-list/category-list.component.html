@@ -1,0 +1,11 @@
+<div class="list-group">
+    <!-- <a (click)="changeCategory()" href="#" class="list-group-item list-group-item-action">Tüm Kategoriler</a> == a tag'ından butona çevirdik çünkü a tag'ında her tıkladığımızda sayfayı yneiliyordu.-->
+    <button (click)="changeCategory()"  class="list-group-item list-group-item-action">Tüm Kategoriler</button> <!-- Tüm kategorilere tıklandığında changeCategory'e değer atanmadığından null olup : actif olan list item'in üzerindeki mavi tik kalkacak.-->
+    <button  *ngFor="let c of categories"
+     (click)="changeCategory(c)" 
+     class="list-group-item list-group-item-action"
+     [class.active]="c==selectedCategory"   
+     >{{c.name}}
+ </button>
+    <!-- [class.active]="c==selectedCategory" == diyerek == eğerki c == selectedCategory ise : class'a active ekle. ***class attribute binding işlemi :binding = bağlama** -->
+ </div>

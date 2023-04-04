@@ -5,18 +5,11 @@
         <div class="col-3">
 
             <cart-summary></cart-summary>
-
-             <div class="list-group">
-                <!-- <a (click)="changeCategory()" href="#" class="list-group-item list-group-item-action">Tüm Kategoriler</a> == a tag'ından butona çevirdik çünkü a tag'ında her tıkladığımızda sayfayı yneiliyordu.-->
-                <button (click)="changeCategory()"  class="list-group-item list-group-item-action">Tüm Kategoriler</button> <!-- Tüm kategorilere tıklandığında changeCategory'e değer atanmadığından null olup : actif olan list item'in üzerindeki mavi tik kalkacak.-->
-                <button  *ngFor="let c of categories"
-                 (click)="changeCategory(c)" 
-                 class="list-group-item list-group-item-action"
-                 [class.active]="c==selectedCategory"   
-                 >{{c.name}}
-             </button>
-                <!-- [class.active]="c==selectedCategory" == diyerek == eğerki c == selectedCategory ise : class'a active ekle. ***class attribute binding işlemi :binding = bağlama** -->
-             </div>   
+            <category-list 
+            [products]="products" 
+            [selectedPage]="selectedPage"
+            (category)="getCategory($event)"
+            ></category-list>
         </div>
         <div class="col-9">
             <div class="row">
@@ -37,28 +30,9 @@
                         {{selectedProducts.length}} tane ürün bulundu  
                     </div>
                 </div>
-                <ng-container *ngFor="let p of products"> <!-- Dizi Ouşturabilmek için-->
-                    <div class="col-md-4">
-                        <div class="card mb-3">
-                            <img src="/assets/img/{{p.imageUrl}}" alt="{{p.name}}">
-                            <div class="card-body">
-                                <h4 class="cart-title">
-                                    <a>
-                                        {{p.name}}
-                                    </a>
-                                </h4>
-                                <small class="text-muted">
-                                    <i class="fas fa-lira-sign"></i> {{p.price}}
-                                </small>
-                            </div>
-                            <div class="card-footer text-center">
-                                <button class="btn btn-outline-primary btn-sm">Details</button>
-                                <button (click)="addProductToCart(p)" class="btn btn-outline-primary btn-sm ms-2">Add To Cart</button> <!--ml-3 : soldan boşkluk alsın-->
-                            </div>
-                        </div>
-                    </div>
-                </ng-container>
             </div>
+            <product-list [products]="products"></product-list>
+                <!-- product-list.ts içinde oluşturduğumuz products inputuna : shop.component.ts içindeki products değerini atıyoruz. = bu durum sayfanın içinde çağırdığımız alt component durumlarında geçerli buradaki gibi.-->
             <div class="row mt-3">
                 <div class="col">
                     <div class="btn-group">
