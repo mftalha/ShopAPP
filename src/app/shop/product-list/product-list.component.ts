@@ -12,6 +12,7 @@ import { Product } from 'src/app/model/product.model';
 
 export class ProductListComponent {
   @Input() products: Product[] = [];
+  selectedProduct: Product = null as any;
 
   constructor(
     private cart: Cart,
@@ -21,5 +22,13 @@ export class ProductListComponent {
     addProductToCart(product: Product){
       this.cart.addItem(product);
       this.router.navigateByUrl('/cart'); //ekle butonuna tıklayınca detay sayfasına yönlen.
+  }
+
+  displayDetails(product: Product){
+    this.selectedProduct = product;
+  }
+
+  hideDetails(){
+    this.selectedProduct = null as any;
   }
 }
