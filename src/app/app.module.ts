@@ -19,6 +19,7 @@ import { CheckoutComponent } from './shop/checkout/checkout.component';
       {path: 'shop', component: ShopComponent},
       {path: 'cart', component: CartDetailComponent},
       {path: 'checkout', component: CheckoutComponent},
+      {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }, //dinamik olarak adrese yönkendirme için.
       {path: '**', redirectTo: "/shop"} //yukarıdakiler hariç başka bir yönlendirmede shop'a yönlendir.
     ])
   ],
