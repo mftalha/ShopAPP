@@ -24,7 +24,7 @@ export class ProductRepository implements OnInit {
 
     //bu id'li verileri getir.
     getProduct(id :number): Product | undefined {
-        return this.products.find(i => i.id === id);
+        return this.products.find(i => i.id == id);
     }
 
     getProducts(category: Category = null as any): Product[] { //null olabilir : tüm kategorilerden bir kategori göndermiyorduk.

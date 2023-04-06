@@ -20,10 +20,10 @@ const routes: Routes = [
 children: [
   //:mode = biz 'create' mi yoksa 'edit' mi biz ne yazarsak o gelecek ; :id = biz hangi id yi yazar isek o gelecek ==> değişken değer yazmak için.
   {path: 'products/:mode/:id', component: ProductFormComponent},
-  {path: 'products/:mode/', component: ProductFormComponent}, // id si olmayan Form gelmesi.
+  {path: 'products/:mode', component: ProductFormComponent}, // id si olmayan Form gelmesi.
   {path: 'products', component: ProductListComponent}, // id si olmayan Form gelmesi.
   {path: 'categories/:mode/:id', component: CategoryListComponent},
-  {path: 'categories/:mode/', component: CategoryFormComponent}, // id si olmayan Form gelmesi.
+  {path: 'categories/:mode', component: CategoryFormComponent}, // id si olmayan Form gelmesi.
   {path: 'categories', component: CategoryListComponent}, // id si olmayan Form gelmesi.
   {path: 'orders', component: OrderListComponent}
 
