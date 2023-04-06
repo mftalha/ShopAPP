@@ -4,6 +4,7 @@
 // token alma mantığı biz login olduğumuzda : bizim verdiğimiz veriler ile : mesela : username , pass , auth = ile sha254 veya başlka bir şifreleme yöntemi ile bizim belirlediğimiz bir benzersiz token oluşturuyor. : şifreleme alg yanında bir de type var.
 // = yani token'ın mantığı bizim verdiğimiz verileri bizim belirlediğimiz şifreleme yöntemi ile encode işlemi yapıp benzersiz bir karekter yığını döndürüyor bize.
 
+//jsonwebtoken
 const jwt = require('jsonwebtoken'); // kütüphanaden bir referans alalım
 
 //tokenin geçerliliğini kontrol edeceğimiz string değerler yazıyoruz.
