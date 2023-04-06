@@ -13,7 +13,7 @@ export class AuthService{
         return this.restService.authentication(username,password);
     }
 
-    //kullanıcının token alıp almadığının kontrolü.
+    //kullanıcının token alıp almadığının kontrolü. = buna göre login sayfasına yönlendirme yapılacak.
     get authencticated(): boolean{
         return this.restService.token != null;
     }

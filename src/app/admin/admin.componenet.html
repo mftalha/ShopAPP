@@ -1,3 +1,18 @@
-<div class="bg-primary p-2 text-white">
-    Admin Placeholder
+<!-- saga sola yapışması için : fluid(sıvı,akışkan) == normalde clas'a container verince sol da ve sag'da çok boşluk kalır ama böyle : çok az bi boşluk bırakıyor.-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col bg-primary p-2 text-white"> <!-- col diyerek : bulunduğu satırı tamamen kaplasın.-->
+            Admin Panel
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <button routerLink="/shop" class="btn btn-outline-info w-100">Shop</button> <!-- btn-block == içinde bulunduğu col-3'ü tamamen kaplasın-->
+
+            <button (click)="logout()" class="btn btn-outline-danger w-100 mt-3">Logout</button> <!-- btn-block == içinde bulunduğu col-3'ü tamamen kaplasın-->
+        </div>
+        <div class="col-9">
+
+        </div>
+    </div>
 </div>

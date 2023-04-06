@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
 
 
+
 @NgModule({
   declarations: [
     AuthComponent,
@@ -20,4 +21,5 @@ import { AuthGuard } from './auth.guard';
   ],
   providers:[AuthGuard]
 })
-export class AdminModule { }
+export class AdminModule { 
+}

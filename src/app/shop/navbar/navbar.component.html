@@ -12,7 +12,9 @@
                 <a routerLink="/shop" class="nav-link">Orders</a>
             </li>
             <li class="navbar-nav">
-                <a routerLink="/admin" class="nav-link">Admin</a> <!-- Burada yazdığım /admin = router içindeki path kısmına bakıyor ve component ve dinamik olmasına göre de yönlendirme işlemini gerçekleştiriyor. -->
+                <!--<a routerLink="/admin" class="nav-link">Admin</a>  Burada yazdığım /admin = router içindeki path kısmına bakıyor ve component ve dinamik olmasına göre de yönlendirme işlemini gerçekleştiriyor. -->
+                <!-- Biz kullanıcıyı admin main sayfasına gönderelim eğer tokenı yok ise == auth guard kullanıcıyı otomatik admin/auth sayfasına yönlendirecektir. var isede birdaha login olması için uğraştırmayacaktır.-->
+                <a routerLink="/admin/main" class="nav-link">Admin</a> 
             </li>
         </ul>
         <ul class="navbar-nav ml-auto"> 
