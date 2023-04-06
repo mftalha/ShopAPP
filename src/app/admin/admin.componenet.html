@@ -5,14 +5,21 @@
             Admin Panel
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-2">
         <div class="col-3">
             <button routerLink="/shop" class="btn btn-outline-info w-100">Shop</button> <!-- btn-block == içinde bulunduğu col-3'ü tamamen kaplasın-->
+
+            <!-- bu 3 butona tıklamalarda col-9 luk kısıma ilgili componenti gömecez-->
+            <!-- router-outlet ile ilişkili kullanılıyor :hangi rauter link seçilir ise raoter-outlet'e o sayfa gömülür.-->
+            <button routerLinkActive="active" routerLink="/admin/main/products" class="btn btn-outline-info w-100 mt-2">Products</button> 
+            <button routerLinkActive="active" routerLink="/admin/main/categories" class="btn btn-outline-info w-100 mt-2">Categories</button> 
+            <button routerLinkActive="active" routerLink="/admin/main/orders" class="btn btn-outline-info w-100 mt-2">Orders</button> 
 
             <button (click)="logout()" class="btn btn-outline-danger w-100 mt-3">Logout</button> <!-- btn-block == içinde bulunduğu col-3'ü tamamen kaplasın-->
         </div>
         <div class="col-9">
-
+            <!-- routerLinkActive ile ilişkili olarak çalışıyor : hangi sayfa adresi verilmiş ise o componenti ilgili alan gömmek için kullanılıyor.-->
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>
