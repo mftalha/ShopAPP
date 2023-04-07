@@ -47,4 +47,10 @@ export class ProductRepository implements OnInit {
                 })
         }
     }
+
+    deleteProduct(product: Product){
+        this.restService.deleteProduct(product)
+            .subscribe(p=> this.products.splice(this.products.findIndex(p=> p.id == product.id),1));
+            //silme işlemi sonucu dönen itemin id'si bizim listemizde hangi iteme karşılık geliyor ise onu siliyoruz. : item index'i bul : sil
+    }
 }

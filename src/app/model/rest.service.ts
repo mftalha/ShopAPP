@@ -54,6 +54,14 @@ export class RestService {
     })
   }
 
+  deleteProduct(product: Product): Observable<Product>{
+    return this.http.delete(`${this.baseUrl}products/${product.id}`,{
+      headers: new HttpHeaders({
+        "Authorization": `Bearer<${this.token}>`
+      })
+    })
+  }
+
   //Observable'nin çalıştırılması sucsicribe edilmesi ile oluyor.
   authentication(username:string, password: string): Observable<boolean>{
     return this.http.post<any>(`${this.baseUrl}login`,{
