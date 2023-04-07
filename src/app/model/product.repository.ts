@@ -33,4 +33,18 @@ export class ProductRepository implements OnInit {
         else
             return this.products
     }
+
+    saveProduct(product: Product){
+        //id var ise update yok ise : create işlemi olacak.
+        if(product.id == null || product.id == 0){
+            this.restService.addProduct(product)
+                .subscribe(p=> this.products.push(p)) //başarılı ise products listesine yeni product'ı ekle : verileri göstermek için kullandığımız dizi.
+        }else{
+            this.restService.updateProduct(product)
+                .subscribe(p=> {
+                    this.products.splice(this.products.findIndex(p=> p.id == product.id),1,product);
+                    //güncelleme işlemini yapıp başarılı olduktan sonra products listesinde splice ile listeyi ayrıştırıp , findIndex ile ilgili elemanı bulup ,1 diyerek bir sonraki elemanı yani ilgili elemanı ,product ile değiştiriyoruz = product: güncellediğim değer.
+                })
+        }
+    }
 }

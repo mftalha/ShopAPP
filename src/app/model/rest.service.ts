@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from './category.model';
@@ -33,6 +33,25 @@ export class RestService {
   // sipariş eklemek için.
   saveOrder(order: Order): Observable<Order> {
     return this.http.post<Order>(`${this.baseUrl}orders`, order)
+  }
+
+  addProduct(product: Product): Observable<Product>{
+    return this.http.post<Product>(`${this.baseUrl}products`, product, {
+      //bu kısmı ekleme sebebimizin token kontrolü için oluşturduğymuz auth-middkeware.js'de = req.headers['authorization'] alanını eklemiş olmamız : bu kısmı eklemezsek ilgili sayfada return olarak döndürdüğümüz 401 hatasını alırız.
+      headers: new HttpHeaders({
+        "Authorization": `Bearer<${this.token}>`
+      })
+    })
+  }
+
+  //update methodunun : add methodundan tek farkı => /${product.id}
+  updateProduct(product: Product): Observable<Product>{
+    return this.http.put<Product>(`${this.baseUrl}products/${product.id}`, product, {
+      //bu kısmı ekleme sebebimizin token kontrolü için oluşturduğymuz auth-middkeware.js'de = req.headers['authorization'] alanını eklemiş olmamız : bu kısmı eklemezsek ilgili sayfada return olarak döndürdüğümüz 401 hatasını alırız.
+      headers: new HttpHeaders({
+        "Authorization": `Bearer<${this.token}>`
+      })
+    })
   }
 
   //Observable'nin çalıştırılması sucsicribe edilmesi ile oluyor.

@@ -39,7 +39,7 @@ module.exports = function(req, res, next){
             //token null değilse ve Bearer ile başlıyor ise : Bearer ile başlaması gerekiyor token'ının : token mevcutmu değilmi kontrolü.
             if(token != null && token.startsWith('Bearer<')){
                 // Bearer< kısmını almamak için 7. karekterden başlıyarak token'ı alıyorum.
-                token = token.substring(7,token.length);
+                token = token.substring(7,token.length-1); //-1 deme kısmımda '>' karekterini kaldırmak
                 try{
                     //token'ının doğruluğunu kontrol ediyoruz. = başta verdiğimiz(token oluştururken) app_secret string değeri ile gelen app_secret string değeri aynı olması gerekiyor.
                     jwt.verify(token, app_secret);
